@@ -1,0 +1,23 @@
+﻿---
+- name: Configure VLANs on Cisco switches
+  hosts: switches
+  gather_facts: false
+
+  tasks:
+    - name: Create VLAN 10 - ADMIN
+      cisco.ios.ios_config:
+        parents: vlan 10
+        lines:
+          - name ADMIN
+
+    - name: Create VLAN 20 - USERS
+      cisco.ios.ios_config:
+        parents: vlan 20
+        lines:
+          - name USERS
+
+    - name: Create VLAN 30 - SERVERS
+      cisco.ios.ios_config:
+        parents: vlan 30
+        lines:
+          - name SERVERS
