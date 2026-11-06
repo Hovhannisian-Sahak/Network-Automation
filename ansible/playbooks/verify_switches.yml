@@ -1,0 +1,15 @@
+﻿---
+- name: Verify Cisco switch configuration
+  hosts: switches
+  gather_facts: false
+
+  tasks:
+    - name: Display VLAN configuration
+      cisco.ios.ios_command:
+        commands:
+          - show vlan brief
+      register: vlan_output
+
+    - name: Print VLAN configuration
+      ansible.builtin.debug:
+        var: vlan_output.stdout_lines

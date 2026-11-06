@@ -4,20 +4,23 @@
   gather_facts: false
 
   tasks:
-    - name: Create VLAN 10 - ADMIN
-      cisco.ios.ios_config:
-        parents: vlan 10
-        lines:
-          - name ADMIN
+    - name: Configure enterprise VLANs
+      cisco.ios.ios_vlans:
+        config:
+          - vlan_id: 10
+            name: ADMIN
+            state: active
 
-    - name: Create VLAN 20 - USERS
-      cisco.ios.ios_config:
-        parents: vlan 20
-        lines:
-          - name USERS
+          - vlan_id: 20
+            name: USERS
+            state: active
 
-    - name: Create VLAN 30 - SERVERS
-      cisco.ios.ios_config:
-        parents: vlan 30
-        lines:
-          - name SERVERS
+          - vlan_id: 30
+            name: SERVERS
+            state: active
+
+          - vlan_id: 99
+            name: MANAGEMENT
+            state: active
+
+        state: merged

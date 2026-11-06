@@ -1,0 +1,4 @@
+﻿---
+vault_ansible_user: admin
+vault_ansible_password: CHANGE_ME
+vault_enable_password: CHANGE_ME
