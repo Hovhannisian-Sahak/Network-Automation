@@ -1,26 +1,12 @@
 ﻿---
-- name: Configure VLANs on Cisco switches
+- name: Create VLANs
   hosts: switches
   gather_facts: false
-
   tasks:
-    - name: Configure enterprise VLANs
-      cisco.ios.ios_vlans:
-        config:
-          - vlan_id: 10
-            name: ADMIN
-            state: active
-
-          - vlan_id: 20
-            name: USERS
-            state: active
-
-          - vlan_id: 30
-            name: SERVERS
-            state: active
-
-          - vlan_id: 99
-            name: MANAGEMENT
-            state: active
-
-        state: merged
+    - name: Configure VLANs
+      cisco.ios.ios_config:
+        parents: "vlan {{ item.id }}"
+        lines: ["name {{ item.name }}"]
+      loop: "{{ vlans }}"
+      loop_control:
+        label: "{{ item.id }} {{ item.name }}"

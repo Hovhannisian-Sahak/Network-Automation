@@ -1,16 +1,16 @@
 ﻿devices = {
   SW1 = {
-    ip    = "192.0.2.11"
+    ip    = "192.168.100.101"
     group = "switches"
   }
 
   SW2 = {
-    ip    = "192.0.2.12"
+    ip    = "192.168.100.102"
     group = "switches"
   }
 
   R1 = {
-    ip    = "192.0.2.21"
+    ip    = "192.168.100.111"
     group = "routers"
   }
 

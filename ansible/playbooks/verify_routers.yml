@@ -1,0 +1,16 @@
+﻿---
+- name: Verify routing
+  hosts: routers
+  gather_facts: false
+  tasks:
+    - name: OSPF state
+      cisco.ios.ios_command:
+        commands: [show ip ospf neighbor, show ip route ospf]
+      register: ospf
+    - ansible.builtin.debug:
+        var: ospf.stdout_lines
+    - name: End-to-end ping
+      cisco.ios.ios_ping:
+        dest: "{{ ping_target.dest }}"
+        source: "{{ ping_target.source }}"
+        count: 5

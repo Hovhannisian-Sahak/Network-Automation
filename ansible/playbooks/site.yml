@@ -1,8 +1,6 @@
 ﻿---
-- name: Network automation deployment
-  hosts: switches
-  gather_facts: false
-
-  tasks:
-    - name: Apply VLAN configuration
-      ansible.builtin.import_playbook: configure_vlans.yml
+- import_playbook: configure_vlans.yml
+- import_playbook: configure_switch_ports.yml
+- import_playbook: configure_routers.yml
+- import_playbook: verify_switches.yml
+- import_playbook: verify_routers.yml

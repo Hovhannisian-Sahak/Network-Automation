@@ -1,0 +1,9 @@
+﻿---
+- name: Configure interfaces and OSPF
+  hosts: routers
+  gather_facts: false
+  tasks:
+    - name: Apply router config from template
+      cisco.ios.ios_config:
+        src: "{{ playbook_dir }}/../templates/router.j2"
+        save_when: modified

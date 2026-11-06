@@ -1,4 +1,4 @@
-﻿---
+---
 access_ports:
   - { name: GigabitEthernet0/1, vlan: 20, description: PC1 }
   - { name: GigabitEthernet0/2, vlan: 20, description: UPLINK-R1 }

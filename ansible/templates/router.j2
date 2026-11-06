@@ -1,0 +1,14 @@
+﻿{% for i in interfaces %}
+interface {{ i.name }}
+ description {{ i.description }}
+ ip address {{ i.ip }} {{ i.mask }}
+ no shutdown
+{% endfor %}
+router ospf {{ ospf.process }}
+ router-id {{ router_id }}
+{% for p in ospf.passive_interfaces %}
+ passive-interface {{ p }}
+{% endfor %}
+{% for n in ospf.networks %}
+ network {{ n.network }} {{ n.wildcard }} area {{ n.area }}
+{% endfor %}

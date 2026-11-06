@@ -1,0 +1,17 @@
+﻿---
+- name: Configure switch access ports
+  hosts: switches
+  gather_facts: false
+  tasks:
+    - name: Access ports
+      cisco.ios.ios_config:
+        parents: "interface {{ item.name }}"
+        lines:
+          - "description {{ item.description }}"
+          - switchport mode access
+          - "switchport access vlan {{ item.vlan }}"
+          - spanning-tree portfast
+          - no shutdown
+      loop: "{{ access_ports }}"
+      loop_control:
+        label: "{{ item.name }}"
