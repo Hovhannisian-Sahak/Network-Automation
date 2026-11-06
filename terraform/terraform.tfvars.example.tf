@@ -13,4 +13,9 @@
     ip    = "192.0.2.21"
     group = "routers"
   }
+
+  R2 = {
+    ip    = "192.168.100.112"
+    group = "routers"
+  }
 }

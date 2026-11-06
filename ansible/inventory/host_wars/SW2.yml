@@ -1,0 +1,5 @@
+﻿---
+access_ports:
+  - { name: GigabitEthernet0/1, vlan: 30, description: SERVER1 }
+  - { name: GigabitEthernet0/2, vlan: 30, description: UPLINK-R2 }
+  - { name: GigabitEthernet0/3, vlan: 99, description: MGMT }

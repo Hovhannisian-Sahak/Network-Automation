@@ -1,0 +1,6 @@
+﻿---
+vlans:
+  - { id: 10, name: ADMIN }
+  - { id: 20, name: USERS }
+  - { id: 30, name: SERVERS }
+  - { id: 99, name: MANAGEMENT }

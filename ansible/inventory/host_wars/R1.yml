@@ -1,0 +1,14 @@
+﻿---
+router_id: 1.1.1.1
+interfaces:
+  - { name: Loopback0,          description: ROUTER-ID, ip: 1.1.1.1,   mask: 255.255.255.255 }
+  - { name: GigabitEthernet0/0, description: LAN-USERS, ip: 10.1.20.1, mask: 255.255.255.0 }
+  - { name: GigabitEthernet0/1, description: TO-R2,     ip: 10.0.12.1, mask: 255.255.255.252 }
+ospf:
+  process: 1
+  passive_interfaces: [GigabitEthernet0/0]
+  networks:
+    - { network: 1.1.1.1,  wildcard: 0.0.0.0,   area: 0 }
+    - { network: 10.1.20.0, wildcard: 0.0.0.255, area: 0 }
+    - { network: 10.0.12.0, wildcard: 0.0.0.3,   area: 0 }
+ping_target: { dest: 10.2.30.10, source: 10.1.20.1 }
